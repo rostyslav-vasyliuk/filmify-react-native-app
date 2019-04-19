@@ -1,2 +1,4 @@
 node_modules
 google-services.json
+.expo
+__tests__
