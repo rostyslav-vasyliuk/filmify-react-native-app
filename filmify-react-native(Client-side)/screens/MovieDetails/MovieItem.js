@@ -2,11 +2,11 @@ import React from 'react';
 import { ScrollView, StyleSheet, ActivityIndicator, Text, TouchableOpacity, View, ImageBackground, Linking, AsyncStorage, Share } from 'react-native';
 import { Image, Divider, Button } from 'react-native-elements';
 import axios from 'axios';
-import GenresData from '../components/data/GenresData';
+import GenresData from '../../components/data/GenresData';
 import ProgressCircle from 'react-native-progress-circle'
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import { Toast } from 'native-base'
-import BASE_URL from '../base-url';
+import BASE_URL from '../../base-url';
 
 export default class MovieItem extends React.Component {
 	static navigationOptions = {

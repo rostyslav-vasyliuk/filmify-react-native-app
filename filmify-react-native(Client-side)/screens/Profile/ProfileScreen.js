@@ -11,17 +11,17 @@ import {
 	AsyncStorage,
 	RefreshControl,
 } from 'react-native';
-import GenresData from '../components/data/GenresData';
+import GenresData from '../../components/data/GenresData';
 import axios from 'axios';
 import { List, ListItem, SwipeRow, Toast } from 'native-base';
 import { Avatar, Header, Overlay, Divider, Text } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
 import { Camera, ImagePicker } from 'expo';
-import AvatarComponent from './ProfileScreens/AvatarComponent';
+import AvatarComponent from './AvatarComponent';
 import LogoutConfirm from './LogoutConfirm';
 
-import BASE_URL from '../base-url'
-import FavoriteFilms from './ProfileScreens/FavoriteFilms';
+import BASE_URL from '../../base-url'
+import FavoriteFilms from './FavoriteFilms';
 
 export default class ProfileScreen extends React.Component {
 	static navigationOptions = ({ navigation }) => {

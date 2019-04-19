@@ -4,7 +4,7 @@ import { SearchBar } from 'react-native-elements';
 import { FontAwesome } from '@expo/vector-icons';
 import axios from 'axios';
 
-import BASE_URL from '../base-url'
+import BASE_URL from '../../base-url'
 
 export default class SearchScreen extends React.Component {
   static navigationOptions = {

@@ -1,17 +1,28 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View, ActivityIndicator, ImageBackground } from 'react-native';
+import {
+	Platform,
+	ScrollView,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	View,
+	ActivityIndicator,
+	ImageBackground
+} from 'react-native';
 import axios from 'axios';
-import GenresData from '../components/data/GenresData';
-import BASE_URL from '../base-url'
+import GenresData from '../../components/data/GenresData';
 
-export default class TopRatedMovies extends React.Component {
+import BASE_URL from '../../base-url'
+
+export default class NowPlaying extends React.Component {
 	state = {
 		movieData: null,
 		loading: true,
 	}
 
 	componentDidMount() {
-		axios.get(`${BASE_URL}/api/movies/get-top-rated`).then(
+		console.log('props navig ', this.props)
+		axios.get(`${BASE_URL}/api/movies/get-now-playing`).then(
 			res => {
 				this.props.loadingChecker();
 				this.setState({ movieData: res.data.results, loading: false })
@@ -28,6 +39,7 @@ export default class TopRatedMovies extends React.Component {
 	}
 
 	navigate = (current_id) => {
+		console.log(current_id)
 		this.props.navigation.navigate('MovieItem', {
 			movie_id: current_id
 		})

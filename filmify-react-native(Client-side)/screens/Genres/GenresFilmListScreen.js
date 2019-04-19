@@ -1,16 +1,7 @@
 import React from 'react';
-import {
-	Platform,
-	ScrollView,
-	StyleSheet,
-	Text,
-	TouchableOpacity,
-	View,
-	ActivityIndicator,
-	ImageBackground
-} from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, ActivityIndicator, ImageBackground } from 'react-native';
 import axios from 'axios';
-import BASE_URL from '../base-url'
+import BASE_URL from '../../base-url'
 
 export default class GenresFilmListScreen extends React.Component {
 	static navigationOptions = {
@@ -35,7 +26,6 @@ export default class GenresFilmListScreen extends React.Component {
 	componentDidMount() {
 		const { navigation } = this.props;
 		const dataObject = navigation.getParam('data', null);
-		console.log(dataObject);
 		axios.get(`${BASE_URL}/api/movies/get-by-genres/${dataObject.movieDB_id}`).then(
 			res => {
 				this.setState({ movieData: res.data.results, loading: false })
@@ -69,7 +59,6 @@ export default class GenresFilmListScreen extends React.Component {
 										<Text style={styles.year}>{this.getYear(elem.release_date)}</Text>
 									</View>
 								</TouchableOpacity>
-
 							))}
 						</ScrollView>
 					)}

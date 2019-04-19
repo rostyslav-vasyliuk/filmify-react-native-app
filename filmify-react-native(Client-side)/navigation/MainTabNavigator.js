@@ -3,13 +3,12 @@ import { Platform, StyleSheet } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator, createMaterialTopTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import TrendingScreen from '../screens/TrendingScreen';
-import GenresScreen from '../screens/GenresScreen';
-import SearchScreen from '../screens/SearchScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import GenresFilmListScreen from '../screens/GenresFilmListScreen';
-import GenreBlock from '../components/block-views/GenreBlock';
-import MovieItem from '../screens/MovieItem';
+import TrendingScreen from '../screens/Trending/TrendingScreen';
+import GenresScreen from '../screens/Genres/GenresScreen';
+import SearchScreen from '../screens/Search/SearchScreen';
+import ProfileScreen from '../screens/Profile/ProfileScreen';
+import GenresFilmListScreen from '../screens/Genres/GenresFilmListScreen';
+import MovieItem from '../screens/MovieDetails/MovieItem';
 
 const TrendingStack = createStackNavigator({
   Trending: TrendingScreen,

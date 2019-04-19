@@ -5,8 +5,6 @@ import UpcomingMovies from './UpcomingMovies';
 import TopRatedMovies from './TopRatedMovies';
 import NowPlaying from './NowPlaying';
 import axios from 'axios';
-import BASE_URL from '../base-url'
-import ErrorBoundary from '../ErrorBoundary';
 
 export default class TrendingScreen extends React.Component {
   static navigationOptions = {
@@ -51,53 +49,51 @@ export default class TrendingScreen extends React.Component {
     const { Top10MoviesLoading, NowPlayingLoading, TopRatedMoviesLoading, UpcomingMoviesLoading } = this.state;
     const isEveryComponentUploaded = Top10MoviesLoading || NowPlayingLoading || TopRatedMoviesLoading || UpcomingMoviesLoading;
     return (
-      <ErrorBoundary>
-        <View style={styles.container}>
-          {(isEveryComponentUploaded)
-            &&
-            (
-              <ActivityIndicator size='large' color='#fff' />
-            )
-          }
+      <View style={styles.container}>
+        {(isEveryComponentUploaded)
+          &&
+          (
+            <ActivityIndicator size='large' color='#fff' />
+          )
+        }
 
-          <ScrollView
-            style={(isEveryComponentUploaded) ? styles.hideTillLoad : null}
-          >
-            <View style={styles.Top10MoviesBlock}>
-              <Top10Movies
-                navigation={this.props.navigation}
-                loadingChecker={this.checkForTopTenMovies}
-              />
-            </View>
+        <ScrollView
+          style={(isEveryComponentUploaded) ? styles.hideTillLoad : null}
+        >
+          <View style={styles.Top10MoviesBlock}>
+            <Top10Movies
+              navigation={this.props.navigation}
+              loadingChecker={this.checkForTopTenMovies}
+            />
+          </View>
 
-            <View style={styles.topRatedBlock}>
-              <Text style={styles.upcomingTitle}>Now in Cinema:</Text>
-              <NowPlaying
-                navigation={this.props.navigation}
-                loadingChecker={this.checkForNowPlaying}
-              />
-            </View>
+          <View style={styles.topRatedBlock}>
+            <Text style={styles.upcomingTitle}>Now in Cinema:</Text>
+            <NowPlaying
+              navigation={this.props.navigation}
+              loadingChecker={this.checkForNowPlaying}
+            />
+          </View>
 
-            <View style={styles.upcomingBlock}>
-              <Text style={styles.upcomingTitle}>Upcoming movies:</Text>
-              <UpcomingMovies
-                navigation={this.props.navigation}
-                loadingChecker={this.checkForUpcomingMovies}
-              />
-            </View>
+          <View style={styles.upcomingBlock}>
+            <Text style={styles.upcomingTitle}>Upcoming movies:</Text>
+            <UpcomingMovies
+              navigation={this.props.navigation}
+              loadingChecker={this.checkForUpcomingMovies}
+            />
+          </View>
 
-            <View style={styles.topRatedBlock}>
-              <Text style={styles.upcomingTitle}>Top Rated Movies:</Text>
-              <TopRatedMovies
-                navigation={this.props.navigation}
-                loadingChecker={this.checkForTopRatedMovies}
-              />
-            </View>
+          <View style={styles.topRatedBlock}>
+            <Text style={styles.upcomingTitle}>Top Rated Movies:</Text>
+            <TopRatedMovies
+              navigation={this.props.navigation}
+              loadingChecker={this.checkForTopRatedMovies}
+            />
+          </View>
 
-          </ScrollView>
+        </ScrollView>
 
-        </View>
-      </ErrorBoundary>
+      </View>
     );
   }
 }

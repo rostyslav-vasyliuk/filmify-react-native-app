@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, ActivityIndicator, ImageBackground } from 'react-native';
 import axios from 'axios';
-import GenresData from '../components/data/GenresData';
-import BASE_URL from '../base-url'
-import ErrorBoundary from '../ErrorBoundary';
+import GenresData from '../../components/data/GenresData';
+import BASE_URL from '../../base-url'
 
 export default class TopTenMovies extends React.Component {
 	state = {

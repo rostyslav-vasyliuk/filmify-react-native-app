@@ -1,12 +1,8 @@
 import React from 'react';
-import { StyleSheet, AsyncStorage, Alert, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, AsyncStorage, Alert, View, ActivityIndicator } from 'react-native';
 import { Permissions, Notifications } from 'expo'
-import Top10Movies from './TopTenMovies';
-import UpcomingMovies from './UpcomingMovies';
-import TopRatedMovies from './TopRatedMovies';
-import NowPlaying from './NowPlaying';
 import axios from 'axios';
-import BASE_URL from '../base-url'
+import BASE_URL from '../../base-url'
 
 export default class UserValidator extends React.Component {
   static navigationOptions = {
@@ -39,21 +35,16 @@ export default class UserValidator extends React.Component {
       }
     }
 
-    console.log('got here')
     let pushToken = await Notifications.getExpoPushTokenAsync();
-    console.log('push', pushToken)
+
     this.subscription = Notifications.addListener(this.handleNotification);
 
     const user_id = await AsyncStorage.getItem('userID');
 
-    axios.post(`${BASE_URL}/api/auth/set-push-token`, {
-      user_id,
-      pushToken,
-    })
+    axios.post(`${BASE_URL}/api/auth/set-push-token`, { user_id, pushToken })
   }
 
   handleNotification = ({ origin, data }) => {
-    console.log('on push ', origin, data);
     if (data.movie_id) {
       this.props.navigation.navigate('MovieItem', { movie_id: data.movie_id })
     }

@@ -10,16 +10,16 @@ import {
   AsyncStorage,
   RefreshControl,
 } from 'react-native';
-import GenresData from '../components/data/GenresData';
+import GenresData from '../../components/data/GenresData';
 import axios from 'axios';
 import { List, ListItem, SwipeRow, Toast, Button, Text } from 'native-base';
 import { Avatar, Header, Overlay, Divider } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
 import { Camera, ImagePicker } from 'expo';
-import AvatarComponent from './ProfileScreens/AvatarComponent';
+import AvatarComponent from './AvatarComponent';
 
-import BASE_URL from '../base-url'
-import FavoriteFilms from './ProfileScreens/FavoriteFilms';
+import BASE_URL from '../../base-url'
+import FavoriteFilms from './FavoriteFilms';
 export default class LoginConfirm extends React.Component {
   state = {
     overlayVisible: false,

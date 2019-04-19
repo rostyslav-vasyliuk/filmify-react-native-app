@@ -6,7 +6,7 @@ import MainTabNavigator from './MainTabNavigator';
 import SignIn from '../screens/Authentication/SignIn';
 import SignUp from '../screens/Authentication/SignUp';
 import AuthLoading from '../screens/Authentication/AuthLoading';
-import UserValidator from '../screens/UserValidator';
+import UserValidator from '../screens/Authentication/UserValidator';
 
 const AuthStack = createSwitchNavigator({
   SignIn: SignIn,
