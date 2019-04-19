@@ -1,0 +1,31 @@
+{
+  "expo": {
+    "name": "Filmify",
+    "slug": "filmify-app",
+    "privacy": "public",
+    "sdkVersion": "32.0.0",
+    "icon": "./assets/images/icon.png",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.filmifyco.filmify"
+    },
+    "android": {
+      "package": "com.filmifyco.filmify",
+      "googleServicesFile": "./google-services.json"
+    }
+  }
+}
