@@ -1,12 +1,8 @@
 import React from 'react';
 import { Image, StyleSheet, TouchableOpacity, View, ActivityIndicator, AsyncStorage, RefreshControl } from 'react-native';
 import GenresData from '../../components/data/GenresData';
-import axios from 'axios';
 import { Icon, List, ListItem, Button, SwipeRow, Toast } from 'native-base';
 import { Avatar, Header, Text, Divider } from 'react-native-elements';
-import { Camera, ImagePicker } from 'expo';
-
-import BASE_URL from '../../base-url'
 
 export default class FavoriteFilms extends React.Component {
   static navigationOptions = {

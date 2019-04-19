@@ -1,25 +1,9 @@
 import React from 'react';
-import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Alert,
-  ActivityIndicator,
-  AsyncStorage,
-  RefreshControl,
-} from 'react-native';
-import GenresData from '../../components/data/GenresData';
-import axios from 'axios';
-import { List, ListItem, SwipeRow, Toast, Button, Text } from 'native-base';
-import { Avatar, Header, Overlay, Divider } from 'react-native-elements';
+import { StyleSheet, TouchableOpacity, View, AsyncStorage } from 'react-native';
+import { Button, Text } from 'native-base';
+import { Overlay } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
-import { Camera, ImagePicker } from 'expo';
-import AvatarComponent from './AvatarComponent';
 
-import BASE_URL from '../../base-url'
-import FavoriteFilms from './FavoriteFilms';
 export default class LoginConfirm extends React.Component {
   state = {
     overlayVisible: false,
