@@ -1,16 +1,5 @@
 import React from 'react';
-import {
-  ActivityIndicator,
-  TouchableOpacity,
-  AsyncStorage,
-  StatusBar,
-  StyleSheet,
-  View,
-  Text,
-  ImageBackground,
-  KeyboardAvoidingView,
-  Keyboard
-} from 'react-native';
+import { TouchableOpacity, AsyncStorage, StyleSheet, ImageBackground, KeyboardAvoidingView, Keyboard } from 'react-native';
 import axios from 'axios';
 import { Input, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -19,14 +8,12 @@ import { Toast } from 'native-base';
 import BASE_URL from '../../base-url'
 
 export default class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     email: '',
     password: '',
     buttonLoader: false,
   }
+  
   onSignIn = () => {
     const { email, password } = this.state;
     Keyboard.dismiss();
@@ -60,6 +47,7 @@ export default class SignIn extends React.Component {
         <ImageBackground source={require('../../assets/images/logo-black.png')} style={{ width: 200, height: 100 }} />
         <Input
           placeholder='Email'
+          keyboardType='email-address'
           autoCapitalize="none"
           autoCorrect={false}
           ref={(input) => { this.firstTextInput = input; }}

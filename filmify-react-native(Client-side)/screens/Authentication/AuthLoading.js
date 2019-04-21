@@ -2,9 +2,6 @@ import React from 'react';
 import { ActivityIndicator, AsyncStorage, StyleSheet, View } from 'react-native';
 
 export default class AuthLoadingScreen extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this._bootstrapAsync();

@@ -36,12 +36,7 @@ export default class GenresFilmListScreen extends React.Component {
 	getYear = (releaseDate) => {
 		return releaseDate.slice(0, 4);
 	}
-	getOverview = (overview) => {
-		if (overview.length > 50) {
-			return overview.slice(0, 50);
-		}
-		return overview;
-	}
+
 	render() {
 		return (
 			<View style={styles.container}>

@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-  ActivityIndicator,
-  AsyncStorage,
-  StatusBar,
-  StyleSheet,
-  View,
-  Text,
-  ImageBackground,
-  KeyboardAvoidingView,
-  Keyboard
-} from 'react-native';
+import { StyleSheet, ImageBackground, KeyboardAvoidingView, Keyboard } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Toast } from 'native-base';
@@ -17,9 +7,6 @@ import axios from 'axios';
 import BASE_URL from '../../base-url'
 
 export default class SignUp extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     firstname: '',
     lastname: '',
@@ -112,6 +99,7 @@ export default class SignUp extends React.Component {
         />
         <Input
           placeholder='Email'
+          keyboardType='email-address'
           autoCapitalize="none"
           autoCorrect={false}
           ref={(input) => { this.thirdTextInput = input; }}

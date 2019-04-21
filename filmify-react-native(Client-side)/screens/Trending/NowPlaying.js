@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-	Platform,
-	ScrollView,
-	StyleSheet,
-	Text,
-	TouchableOpacity,
-	View,
-	ActivityIndicator,
-	ImageBackground
-} from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, ActivityIndicator, ImageBackground } from 'react-native';
 import axios from 'axios';
 import GenresData from '../../components/data/GenresData';
 
@@ -21,7 +12,6 @@ export default class NowPlaying extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log('props navig ', this.props)
 		axios.get(`${BASE_URL}/api/movies/get-now-playing`).then(
 			res => {
 				this.props.loadingChecker();
@@ -39,7 +29,6 @@ export default class NowPlaying extends React.Component {
 	}
 
 	navigate = (current_id) => {
-		console.log(current_id)
 		this.props.navigation.navigate('MovieItem', {
 			movie_id: current_id
 		})

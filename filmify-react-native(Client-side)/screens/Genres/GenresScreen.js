@@ -1,7 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import GenreBlock from '../../components/block-views/GenreBlock';
-import { Button } from 'react-native-elements';
 import GenresData from '../../components/data/GenresData';
 export default class GenresScreen extends React.Component {
   static navigationOptions = {

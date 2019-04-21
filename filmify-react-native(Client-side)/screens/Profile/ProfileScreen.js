@@ -1,27 +1,13 @@
 import React from 'react';
-import {
-	Image,
-	ScrollView,
-	StyleSheet,
-	TouchableOpacity,
-	View,
-	Alert,
-	ActivityIndicator,
-	Button,
-	AsyncStorage,
-	RefreshControl,
-} from 'react-native';
-import GenresData from '../../components/data/GenresData';
+import { ScrollView, StyleSheet, View, ActivityIndicator, AsyncStorage, RefreshControl } from 'react-native';
 import axios from 'axios';
-import { List, ListItem, SwipeRow, Toast } from 'native-base';
-import { Avatar, Header, Overlay, Divider, Text } from 'react-native-elements';
-import { AntDesign } from '@expo/vector-icons';
-import { Camera, ImagePicker } from 'expo';
+import { Toast } from 'native-base';
+import { Divider, Text } from 'react-native-elements';
 import AvatarComponent from './AvatarComponent';
 import LogoutConfirm from './LogoutConfirm';
+import FavoriteFilms from './FavoriteFilms';
 
 import BASE_URL from '../../base-url'
-import FavoriteFilms from './FavoriteFilms';
 
 export default class ProfileScreen extends React.Component {
 	static navigationOptions = ({ navigation }) => {

@@ -52,7 +52,6 @@ export default class LoginConfirm extends React.Component {
             </View>
           </View>
         </Overlay>
-
       </View>
     )
   }

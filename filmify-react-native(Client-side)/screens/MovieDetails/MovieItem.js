@@ -22,8 +22,13 @@ export default class MovieItem extends React.Component {
 
 	async componentDidMount() {
 		const { navigation } = this.props;
-		const user_id = await AsyncStorage.getItem('userID');
 		const movie_id = navigation.getParam('movie_id', null);
+		this.updateView(movie_id);
+	}
+
+	updateView = async (movie_id) => {
+		this.setState({ loading: true })
+		const user_id = await AsyncStorage.getItem('userID');
 		axios.all([
 			axios.get(`${BASE_URL}/api/movies/details/${movie_id}`),
 			axios.get(`${BASE_URL}/api/movies/get-similar/${movie_id}`),
@@ -76,21 +81,6 @@ export default class MovieItem extends React.Component {
 		return '#' + ('000000' + h.toString(16)).slice(-6);
 	}
 
-	updateView = async (movie_id) => {
-		this.setState({ loading: true })
-		const user_id = await AsyncStorage.getItem('userID');
-		axios.all([
-			axios.get(`${BASE_URL}/api/movies/details/${movie_id}`),
-			axios.get(`${BASE_URL}/api/movies/get-similar/${movie_id}`),
-			axios.get(`${BASE_URL}/api/movies/check-is-favourite-movie/${user_id}/${movie_id}`)
-		])
-			.then(axios.spread((detailsResponse, similarResponse, checkResponse) => {
-				let similarMoviesData = similarResponse.data.results;
-
-				this.setState({ movieData: detailsResponse.data, similarMoviesData, loading: false, addedToFavourite: checkResponse.data.result })
-			}));
-	}
-
 	changeMyList = async (movieData) => {
 		const user_id = await AsyncStorage.getItem('userID');
 		const movie = {
@@ -111,7 +101,14 @@ export default class MovieItem extends React.Component {
 						text: 'Film was removed from your list',
 					}))
 				}
-			)
+			).catch(
+				err => {
+					Toast.show(({
+						text: 'Server error',
+						type: 'danger',
+					}))
+					return;
+				})
 		} else {
 			axios.post(`${BASE_URL}/api/movies/add-to-movie-list`, data).then(
 				res => {
@@ -119,9 +116,14 @@ export default class MovieItem extends React.Component {
 						text: 'Film was added to your list',
 					}))
 				}
-			).catch((err) => {
-
-			})
+			).catch(
+				err => {
+					Toast.show(({
+						text: 'Server error',
+						type: 'danger',
+					}))
+					return;
+				})
 		}
 		this.setState({ addedToFavourite: !this.state.addedToFavourite })
 	}
@@ -130,14 +132,9 @@ export default class MovieItem extends React.Component {
 		Share.share({
 			message: 'https://www.themoviedb.org/movie/' + this.state.movieData.id,
 			url: 'https://www.themoviedb.org/movie/' + this.state.movieData.id,
-			title: 'Wow, did you see that?'
+			title: 'Check this out!'
 		}, {
-				// Android only:
-				dialogTitle: 'Look what I\'ve found',
-				// iOS only:
-				excludedActivityTypes: [
-					'com.apple.UIKit.activity.PostToTwitter'
-				]
+				dialogTitle: 'Look what I\'ve found!',
 			})
 	}
 
@@ -174,7 +171,6 @@ export default class MovieItem extends React.Component {
 									Box Office: {this.getMoneyUserFriendly(movieData.revenue)}
 								</Text>
 								<Text style={styles.duration}>Duration: {movieData.runtime} min</Text>
-								{/* <Button title="add to my films" onPress={() => this.addToMyList(movieData)} /> */}
 							</View>
 							<View style={{ alignItems: 'center' }}>
 								<TouchableOpacity onPress={() => this.changeMyList(movieData)} style={{ paddingBottom: 5 }}>
@@ -265,7 +261,6 @@ export default class MovieItem extends React.Component {
 					</ScrollView>
 				}
 			</View>
-
 		);
 	}
 }

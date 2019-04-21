@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, AsyncStorage, Alert, View, ActivityIndicator } from 'react-native';
+import { AsyncStorage, Alert, View, ActivityIndicator, StyleSheet } from 'react-native';
 import { Permissions, Notifications } from 'expo'
 import axios from 'axios';
 import BASE_URL from '../../base-url'
@@ -23,7 +23,6 @@ export default class UserValidator extends React.Component {
     const token = await AsyncStorage.getItem('userToken');
     this.validateUser(token);
     this.registerForPushNotifications();
-    // await AsyncStorage.setItem('userID', this.state.user._id);
   }
 
   async registerForPushNotifications() {
