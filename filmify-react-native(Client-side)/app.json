@@ -26,6 +26,18 @@
     "android": {
       "package": "com.filmifyco.filmify",
       "googleServicesFile": "./google-services.json"
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "filmify-inc",
+            "project": "filmify",
+            "authToken": "612dca45e7c545a3ad74dcb5f90fa02aed007db5ccba4102aee2f683b32aed7e"
+          }
+        }
+      ]
     }
   }
 }

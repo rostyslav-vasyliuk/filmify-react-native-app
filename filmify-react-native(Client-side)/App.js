@@ -1,16 +1,18 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 import { Root } from "native-base";
-import ErrorBoundary from './ErrorBoundary';
 import { Ionicons, AntDesign, Entypo, FontAwesome } from '@expo/vector-icons';
+import Sentry from 'sentry-expo';
+import SentryKey from './sentry-key';
+
+Sentry.config(SentryKey).install();
 
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
     fontsLoaded: false,
-    hasError:false,
   };
 
   async componentDidMount() {
@@ -45,14 +47,6 @@ export default class App extends React.Component {
     this.setState({ fontsLoaded: true })
   }
 
-  componentDidCatch(error, info) {
-    console.log(error);
-    console.log(info);
-    console.log('_____ERROR______');
-
-    this.setState({ hasError: true });
-  }
-
   render() {
     if (!this.state.isLoadingComplete && !this.state.fontsLoaded) {
       return (
@@ -63,7 +57,6 @@ export default class App extends React.Component {
         />
       );
     } else {
-      if(!this.state.hasError){
       return (
         <Root>
           <View style={styles.container}>
@@ -72,11 +65,6 @@ export default class App extends React.Component {
           </View>
         </Root>
       );
-      }else{
-        <View>
-          <Text>Error Occured</Text>
-        </View>
-      }
     }
   }
 

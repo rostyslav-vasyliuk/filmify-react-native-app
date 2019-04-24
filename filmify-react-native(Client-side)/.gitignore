@@ -2,3 +2,4 @@ node_modules
 google-services.json
 .expo
 __tests__
+sentry-key.js

@@ -1,1 +1,1 @@
-export default "https://whispering-reaches-78561.herokuapp.com"
+export default "https://filmify-app.herokuapp.com"

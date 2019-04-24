@@ -22,7 +22,8 @@
     "react-native-elements": "^1.1.0",
     "react-native-progress-circle": "^2.0.1",
     "react-native-vector-icons": "^6.4.2",
-    "react-navigation": "^3.6.1"
+    "react-navigation": "^3.6.1",
+    "sentry-expo": "^1.12.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
