@@ -40,17 +40,12 @@ export default class AvatarComponent extends React.Component {
               this.onActionSheetButton(buttonIndex);
             }
           )}>
-          {image ?
-            <Avatar
-              rounded
-              size='xlarge'
-              source={{ uri: image }}
-            /> :
-            <Avatar
-              rounded
-              icon={{ name: 'user', type: 'font-awesome' }}
-              size='xlarge'
-            />}
+          <Avatar
+            rounded
+            size='xlarge'
+            icon={{ name: 'user', type: 'font-awesome' }}
+            source={{ uri: image }}
+          />
         </TouchableOpacity>
       </View>
     );

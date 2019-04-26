@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, StyleSheet, ActivityIndicator, Text, TouchableOpacity, View, ImageBackground, Linking, AsyncStorage, Share } from 'react-native';
 import { Image, Divider, Button } from 'react-native-elements';
 import axios from 'axios';
-import GenresData from '../../components/data/GenresData';
+import GenresData from '../Genres/data/GenresData';
 import ProgressCircle from 'react-native-progress-circle'
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import { Toast } from 'native-base'
@@ -149,11 +149,20 @@ export default class MovieItem extends React.Component {
 					</View>
 					:
 					<ScrollView style={styles.container}>
-						<Image
-							source={{ uri: `https://image.tmdb.org/t/p/w1280/${movieData.backdrop_path}` }}
-							style={styles.image}
-							PlaceholderContent={<ActivityIndicator size='large' color="#fff" />}
-						/>
+						{movieData.backdrop_path ?
+							<Image
+								source={{ uri: `https://image.tmdb.org/t/p/w1280/${movieData.backdrop_path}` }}
+								style={styles.image}
+								placeholderStyle={{ backgroundColor: '#000000' }}
+								PlaceholderContent={<ActivityIndicator size='large' color="#fff" />}
+							/>
+							:
+							<Image
+								PlaceholderContent={<Entypo name='image' size={60} color='#8c939e' />}
+								placeholderStyle={{ backgroundColor: '#000000' }}
+								style={styles.image}
+							/>
+						}
 						<Text style={styles.title}>{movieData.title}</Text>
 						<View style={styles.infoMovieMain}>
 							<View>

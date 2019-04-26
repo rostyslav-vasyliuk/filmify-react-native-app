@@ -10,7 +10,7 @@ import {
     ImageBackground,
     Alert
 } from 'react-native';
-import GenresData from '../data/GenresData';
+import GenresData from './data/GenresData';
 import { createStackNavigator } from 'react-navigation';
 import { Button } from 'react-native-elements';
 

@@ -1,8 +1,10 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View, ActivityIndicator, ImageBackground } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, ActivityIndicator } from 'react-native';
+import { Image } from 'react-native-elements';
 import axios from 'axios';
-import GenresData from '../../components/data/GenresData';
+import GenresData from '../Genres/data/GenresData';
 import BASE_URL from '../../base-url'
+import { Entypo } from '@expo/vector-icons';
 
 export default class UpcomingMovies extends React.Component {
 	static navigationOptions = {
@@ -68,8 +70,20 @@ export default class UpcomingMovies extends React.Component {
 						{this.state.movieData.map((elem) =>
 							<View key={elem.id}>
 								<TouchableOpacity style={styles.similarMovieContainer} onPress={() => this.navigate(elem.id)}>
-									<ImageBackground source={{ uri: 'https://image.tmdb.org/t/p/w500/' + elem.backdrop_path }} style={styles.movieImageStyle} imageStyle={{ borderRadius: 15 }}>
-									</ImageBackground>
+								{elem.backdrop_path ?
+									<Image
+										placeholderStyle={{ backgroundColor: '#3a3d42' }}
+										PlaceholderContent={<ActivityIndicator size='small' color="#fff" />}
+										source={{ uri: 'https://image.tmdb.org/t/p/w500/' + elem.backdrop_path }}
+										style={styles.movieImageStyle}
+									/>
+									:
+									<Image
+										placeholderStyle={{ backgroundColor: '#3a3d42' }}
+										PlaceholderContent={<Entypo name='image' size={40} color='#8c939e' />}
+										style={styles.movieImageStyle}
+									/>
+								}
 									<View style={styles.textContainer}>
 										<Text style={styles.movieTitle}>{elem.title}</Text>
 										<Text style={styles.movieInfo}>
@@ -115,6 +129,7 @@ const styles = StyleSheet.create({
 	movieImageStyle: {
 		width: 150,
 		height: 180,
+		borderRadius: 15,
 	},
 	similarMovieContainer: {
 		width: 150,

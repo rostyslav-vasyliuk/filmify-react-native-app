@@ -1,7 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View, ActivityIndicator, ImageBackground } from 'react-native';
-import { SearchBar } from 'react-native-elements';
-import { FontAwesome } from '@expo/vector-icons';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, ActivityIndicator } from 'react-native';
+import { SearchBar, Image } from 'react-native-elements';
+import { FontAwesome, Entypo } from '@expo/vector-icons';
 import axios from 'axios';
 
 import BASE_URL from '../../base-url'
@@ -109,13 +109,25 @@ export default class SearchScreen extends React.Component {
                   <View>
                     {this.state.movieData.map((elem) => (
                       <TouchableOpacity style={styles.movieItem} key={elem.id} onPress={() => this.props.navigation.navigate('MovieItem', { movie_id: elem.id })}>
-                        <ImageBackground source={{ uri: 'https://image.tmdb.org/t/p/w500/' + elem.backdrop_path }} style={styles.imageItem} imageStyle={{ borderRadius: 15 }} />
+                        {elem.backdrop_path ?
+                          <Image
+                            placeholderStyle={{ backgroundColor: '#3a3d42' }}
+                            PlaceholderContent={<ActivityIndicator size='small' color="#fff" />}
+                            source={{ uri: 'https://image.tmdb.org/t/p/w500/' + elem.backdrop_path }}
+                            style={styles.imageItem}
+                          />
+                          :
+                          <Image
+                            placeholderStyle={{ backgroundColor: '#3a3d42' }}
+                            PlaceholderContent={<Entypo name='image' size={40} color='#8c939e' />}
+                            style={styles.imageItem}
+                          />
+                        }
                         <View style={styles.movieInfo}>
                           <Text style={styles.title}>{elem.title}</Text>
                           <Text style={styles.year}>{this.getYear(elem.release_date)}</Text>
                         </View>
                       </TouchableOpacity>
-
                     ))}
                   </View>
                 }
@@ -155,6 +167,7 @@ const styles = StyleSheet.create({
   imageItem: {
     width: 120,
     height: 120,
+    borderRadius: 15,
   },
   movieItem: {
     flexDirection: 'row',

@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, ActivityIndicator, ImageBackground } from 'react-native';
+import { Image } from 'react-native-elements';
+import { Entypo } from '@expo/vector-icons';
 import axios from 'axios';
-import GenresData from '../../components/data/GenresData';
+import GenresData from '../Genres/data/GenresData';
 import BASE_URL from '../../base-url'
 
 export default class TopTenMovies extends React.Component {
@@ -49,8 +51,20 @@ export default class TopTenMovies extends React.Component {
 							this.state.dividedArray.map((elem, index) =>
 								<View key={elem[0].id} style={styles.twoMovieContainer}>
 									<TouchableOpacity style={styles.movieContainer} onPress={() => this.navigate(elem[0].id)}>
-										<ImageBackground source={{ uri: 'https://image.tmdb.org/t/p/w500/' + elem[0].backdrop_path }} style={styles.movieImageStyle} imageStyle={{ borderRadius: 15 }}>
-										</ImageBackground>
+										{elem[0].backdrop_path ?
+											<Image
+												placeholderStyle={{ backgroundColor: '#3a3d42' }}
+												PlaceholderContent={<ActivityIndicator size='small' color="#fff" />}
+												source={{ uri: 'https://image.tmdb.org/t/p/w500/' + elem[0].backdrop_path }}
+												style={styles.movieImageStyle}
+											/>
+											:
+											<Image
+												placeholderStyle={{ backgroundColor: '#3a3d42' }}
+												PlaceholderContent={<Entypo name='image' size={40} color='#8c939e' />}
+												style={styles.movieImageStyle}
+											/>
+										}
 										<View style={styles.textContainer}>
 											<Text style={styles.movieTitle}>{elem[0].title}</Text>
 											<Text style={styles.movieInfo}>
@@ -59,8 +73,20 @@ export default class TopTenMovies extends React.Component {
 										</View>
 									</TouchableOpacity>
 									<TouchableOpacity style={styles.movieContainer} onPress={() => this.navigate(elem[1].id)}>
-										<ImageBackground source={{ uri: 'https://image.tmdb.org/t/p/w500/' + elem[1].backdrop_path }} style={styles.movieImageStyle} imageStyle={{ borderRadius: 15 }}>
-										</ImageBackground>
+										{elem[1].backdrop_path ?
+											<Image
+												placeholderStyle={{ backgroundColor: '#3a3d42' }}
+												PlaceholderContent={<ActivityIndicator size='small' color="#fff" />}
+												source={{ uri: 'https://image.tmdb.org/t/p/w500/' + elem[1].backdrop_path }}
+												style={styles.movieImageStyle}
+											/>
+											:
+											<Image
+												placeholderStyle={{ backgroundColor: '#3a3d42' }}
+												PlaceholderContent={<Entypo name='image' size={40} color='#8c939e' />}
+												style={styles.movieImageStyle}
+											/>
+										}
 										<Text style={styles.movieTitle}>{elem[1].title}</Text>
 										<Text style={styles.movieInfo}>
 											{`${this.getYear(elem[1].release_date)}, ${this.getGenre(elem[1].genre_ids[0])}`}
@@ -90,6 +116,7 @@ const styles = StyleSheet.create({
 	movieImageStyle: {
 		flex: 1,
 		height: 180,
+		borderRadius: 15,
 	},
 	twoMovieContainer: {
 		flex: 1,

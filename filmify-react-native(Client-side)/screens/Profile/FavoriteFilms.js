@@ -1,8 +1,10 @@
 import React from 'react';
-import { Image, StyleSheet, TouchableOpacity, View, ActivityIndicator, AsyncStorage, RefreshControl } from 'react-native';
-import GenresData from '../../components/data/GenresData';
-import { Icon, List, ListItem, Button, SwipeRow, Toast } from 'native-base';
-import { Avatar, Header, Text, Divider } from 'react-native-elements';
+import { StyleSheet, TouchableOpacity, View, ActivityIndicator } from 'react-native';
+import { Image } from 'react-native-elements';
+import { Entypo } from '@expo/vector-icons';
+import GenresData from '../Genres/data/GenresData';
+import { Icon, Button, SwipeRow } from 'native-base';
+import { Text } from 'react-native-elements';
 
 export default class FavoriteFilms extends React.Component {
   static navigationOptions = {
@@ -59,7 +61,19 @@ export default class FavoriteFilms extends React.Component {
                       body={
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('MovieItem', { movie_id: elem.id })} style={styles.myfilmsContainer}>
                           <View style={styles.myfilmInfo}>
-                            <Image source={{ uri: 'https://image.tmdb.org/t/p/w500/' + elem.backdrop_path }} style={styles.movieImage} />
+                            {elem.backdrop_path ?
+                              <Image
+                                placeholderStyle={{ backgroundColor: '#3a3d42' }}
+                                source={{ uri: 'https://image.tmdb.org/t/p/w500/' + elem.backdrop_path }}
+                                style={styles.movieImage}
+                              />
+                              :
+                              <Image
+                                placeholderStyle={{ backgroundColor: '#3a3d42' }}
+                                PlaceholderContent={<Entypo name='image' size={40} color='#8c939e' />}
+                                style={styles.movieImage}
+                              />
+                            }
                             <View style={styles.info}>
                               <Text style={styles.movieTitle}>{elem.title}</Text>
                               <Text style={styles.movieInfo}>
