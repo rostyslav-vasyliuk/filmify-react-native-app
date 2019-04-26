@@ -7,6 +7,8 @@ import { Ionicons, AntDesign, Entypo, FontAwesome } from '@expo/vector-icons';
 import Sentry from 'sentry-expo';
 import SentryKey from './sentry-key';
 
+Sentry.enableInExpoDevelopment = true;
+
 Sentry.config(SentryKey).install();
 
 export default class App extends React.Component {

@@ -8,6 +8,7 @@ import LogoutConfirm from './LogoutConfirm';
 import FavoriteFilms from './FavoriteFilms';
 
 import BASE_URL from '../../base-url'
+import ErrorGenerator from './ErrorGenerator';
 
 export default class ProfileScreen extends React.Component {
 	static navigationOptions = ({ navigation }) => {
@@ -23,6 +24,9 @@ export default class ProfileScreen extends React.Component {
 				fontSize: 18,
 				color: '#fff',
 			},
+			headerLeft: (
+				<ErrorGenerator />
+			),
 			headerRight: (
 				<LogoutConfirm navigation={navigation} />
 			)
