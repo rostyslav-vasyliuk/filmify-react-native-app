@@ -1,5 +1,5 @@
-#  Filmify
 
+#  Filmify (React Native app)
 ## Info
 Filmify is an application for movie fans with personal profile, favorite films and movie searching and sharing. 
 
@@ -12,7 +12,9 @@ Movies API: [The Movie DB](https://www.themoviedb.org/).
 **Setup**:
 * [Front-side (React Native setup)](#front-side-setup)
 * [Back-side (Node.js/Express setup)](#back-side-setup)
-
+## Overview
+### Authentication screens:![Auth screenshot](https://i.ibb.co/DQmrgZz/auth.png)
+### Tab pages screens:![App screenshot](https://i.ibb.co/jV3wXrH/app-1.png)
 ## Front side setup
 #### First usage:
 ```bash
